@@ -1,15 +1,13 @@
 import React from "react";
-import DisplayImageFromBlockchain from "./DisplayImageFromBlockchain";
-import Api from "./Api";
+import SearchBar from "./SearchBar";
 
 class App extends React.Component {
-  state = {};
   render() {
     return (
       <div>
-        <Api />
-        App
-        <DisplayImageFromBlockchain />
+        <div className="ui container" style={{ marginTop: "10px" }}>
+          <SearchBar />
+        </div>
       </div>
     );
   }
