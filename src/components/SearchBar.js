@@ -34,7 +34,9 @@ class SearchBar extends React.Component {
         </div>
         <div>
           <Link to="/SendTransactionPage">
-            <button>I Want To Store An Image On The Blockchain.</button>
+            <button className="ui primary button">
+              I Want To Store An Image On The Blockchain.
+            </button>
           </Link>
         </div>
       </div>
