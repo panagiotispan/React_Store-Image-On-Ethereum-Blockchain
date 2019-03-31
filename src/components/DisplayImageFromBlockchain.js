@@ -33,7 +33,7 @@ class DisplayImageFromBlockchain extends React.Component {
       <div>
         <div>
           <button className="ui primary button" onClick={this.requestImage}>
-            Fetch Image From The Blockhain.
+            Download Image From The Blockhain.
           </button>
         </div>{" "}
         <br />
