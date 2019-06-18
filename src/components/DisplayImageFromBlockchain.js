@@ -23,7 +23,7 @@ class DisplayImageFromBlockchain extends React.Component {
       this.setState({
         ImageText: "",
         image_does_not_exist:
-          "The Requested Transaction Does Not Exist On The Blockchain."
+          "The Requested Image/Transaction Does Not Exist On The Blockchain!!"
       });
     }
   };
@@ -32,16 +32,22 @@ class DisplayImageFromBlockchain extends React.Component {
     return (
       <div>
         <div>
-          <button className="ui primary button" onClick={this.requestImage}>
-            Download Image From The Blockhain.
+          <button
+            className="big ui button"
+            onClick={this.requestImage}
+            style={{ position: "relative", left: `10%`, top: `370px` }}
+          >
+            Download Image From The Blockhain
           </button>
-        </div>{" "}
+        </div>
         <br />
         <br />
         <div>
           <img src={this.state.ImageText} alt="" />
         </div>
-        {this.state.image_does_not_exist}
+        <div style={{ color: "white", fontSize: "30px", textAlign: "center" }}>
+          {this.state.image_does_not_exist}
+        </div>
       </div>
     );
   }

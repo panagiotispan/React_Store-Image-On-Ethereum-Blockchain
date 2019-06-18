@@ -13,6 +13,8 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
+        <br />
+        <br />
         <div className="ui segment container">
           <form onSubmit={this.onFormSubmit} className="ui form">
             <div className="field">
@@ -20,8 +22,9 @@ class SearchBar extends React.Component {
               <input
                 type="text"
                 value={this.state.transaction_hash}
-                onChange={e =>
-                  this.setState({ transaction_hash: e.target.value })
+                onChange={
+                  e =>
+                    this.setState({ transaction_hash: e.target.value.trim() }) // added trim to remove empty spaces.
                 }
               />
             </div>
@@ -31,20 +34,12 @@ class SearchBar extends React.Component {
           <DisplayImageFromBlockchain
             transaction_hash={this.state.transaction_hash}
           />
-        </div>
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <Link to="/SendTransactionPage">
-            <button className="ui primary button">
-              I Want To Store An Image On The Blockchain.
+            <button
+              className="big ui button"
+              style={{ position: "absolute", left: `60%`, top: `528px` }}
+            >
+              Store An Image On The Blockchain
             </button>
           </Link>
         </div>

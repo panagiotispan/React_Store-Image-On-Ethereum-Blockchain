@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Message } from "semantic-ui-react";
+import "./SendTransactionToBlockchain.css";
 
 class SendTransactionToBlockchain extends React.Component {
   state = {
