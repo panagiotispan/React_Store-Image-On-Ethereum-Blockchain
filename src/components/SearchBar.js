@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
         <div className="ui segment container">
           <form onSubmit={this.onFormSubmit} className="ui form">
             <div className="field">
-              <label>Input Transaction Hash</label>
+              <label>Input the Transaction Hash below:</label>
               <input
                 type="text"
                 value={this.state.transaction_hash}

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SendTransactionToBlockchain from "./SendTransactionToBlockchain";
 import Buttons from "./Buttons";

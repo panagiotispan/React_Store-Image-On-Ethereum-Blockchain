@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Message } from "semantic-ui-react";
-import "./SendTransactionToBlockchain.css";
 
 class SendTransactionToBlockchain extends React.Component {
   state = {
@@ -9,7 +8,9 @@ class SendTransactionToBlockchain extends React.Component {
     base64String: "",
     hexString: "",
     errorMessage: "",
-    errorMessageHidden: true
+    successMessage: "",
+    errorMessageHidden: true,
+    successMessageHidden: true
   };
 
   // Read image file, turn it to base64 string.
@@ -46,7 +47,7 @@ class SendTransactionToBlockchain extends React.Component {
           "data:image/jpeg;base64,",
           ""
         );
-        console.log(Base64String);
+        // console.log(Base64String);
         // Turn Base64 String to HEX sting.
         var raw = atob(Base64String);
         var HEX = "";
@@ -73,7 +74,11 @@ class SendTransactionToBlockchain extends React.Component {
               console.log(
                 "Transaction successful!! Tx Hash: " + transactionHash
               );
-              this.setState({ loading: false });
+              this.setState({
+                loading: false,
+                successMessageHidden: false,
+                successMessage: transactionHash
+              });
             } else {
               this.setState({
                 errorMessage: err.message,
@@ -86,7 +91,7 @@ class SendTransactionToBlockchain extends React.Component {
       } catch (err) {
         this.setState({
           errorMessageHidden: false,
-          errorMessage: err,
+          errorMessage: err.message,
           loading: false
         });
       }
@@ -103,7 +108,19 @@ class SendTransactionToBlockchain extends React.Component {
     return (
       <div>
         <div>
-          <input type="file" onChange={this.readImageToBase64} />
+          <input
+            type="file"
+            name="file"
+            onChange={this.readImageToBase64}
+            style={{
+              color: "white",
+              position: "absolute",
+              top: "200px",
+              left: "45%",
+              backgroundColor: "black",
+              display: "inline-block"
+            }}
+          />
           <img
             id="output"
             src={this.state.base64String}
@@ -113,26 +130,40 @@ class SendTransactionToBlockchain extends React.Component {
         </div>
         <div>
           <Button
-            className="ui primary button"
+            className="big ui button"
             loading={this.state.loading}
             onClick={this.onSubmit}
+            style={{ position: "absolute", left: `65%`, top: `528px` }}
           >
             Send Transaction
           </Button>
         </div>
         <div>
           <Message
+            className="container"
             hidden={this.state.errorMessageHidden}
             error
             header="There was some errors with your submission!"
             content={this.state.errorMessage}
+            style={{ position: "absolute", top: "280px", width: "100%" }}
           />
         </div>
-
+        <div>
+          <Message
+            className=" ui success message container"
+            hidden={this.state.successMessageHidden}
+            header="Your Transaction is broadcasted!"
+            content={this.state.successMessage}
+            style={{ position: "relative", top: "180px" }}
+          />
+        </div>
         <div>
           <Link to="/DisplayImagePage">
-            <button className="ui primary button">
-              I Want to Download An Image From The Blockchain.
+            <button
+              className="big ui button"
+              style={{ position: "absolute", left: `10%`, top: `528px` }}
+            >
+              Download An Image From The Blockchain.
             </button>
           </Link>
         </div>
